@@ -1,0 +1,27 @@
+# .goreleaser.yml
+env:
+  - GO111MODULE=on
+  - GOPROXY=https://proxy.golang.org
+before:
+  hooks:
+    - go mod download
+builds:
+  - binary: oc-console
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - 386
+      - arm
+    ignore:
+      - goos: darwin
+        goarch: 386
+    hooks:
+      post: hack/upx.sh
+release:
+  github:
+    owner: cblecker
+    name: oc-console
+  prerelease: auto
