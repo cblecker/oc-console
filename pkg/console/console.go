@@ -31,7 +31,7 @@ var (
 	  # Open the OpenShift console in your default browser
 	  %[1]s %[2]s
 
-	  # Display the URL for the api-server
+	  # Display the URL for the OpenShift console
 	  %[1]s %[2]s --url`)
 )
 
