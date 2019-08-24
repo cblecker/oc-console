@@ -1,8 +1,8 @@
-on: push
+on:
+  push:
+    tags:
+      - '*'
 name: Release on tag push
-push:
-  tags:
-    - '*'
 jobs:
   release:
     runs-on: ubuntu-latest
