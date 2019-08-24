@@ -1,0 +1,22 @@
+on: push
+name: Release on tag push
+push:
+  tags:
+    - '*'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: lint
+      uses: actions-contrib/golangci-lint@master
+      env:
+        GOPROXY: https://proxy.golang.org
+      with:
+        args: run
+    - name: goreleaser
+      uses: docker://goreleaser/goreleaser
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        args: release
