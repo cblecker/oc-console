@@ -14,6 +14,9 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
+    - name: Install UPX
+      run: sudo apt-get install -y upx
+
     - name: Cut release
       uses: docker://goreleaser/goreleaser
       env:

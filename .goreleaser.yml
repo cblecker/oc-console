@@ -7,17 +7,22 @@ before:
     - go mod download
 builds:
   - binary: oc-console
+    env:
+      - CGO_ENABLED=0
     goos:
       - linux
       - darwin
       - windows
     goarch:
       - amd64
-      - 386
-      - arm
-    ignore:
-      - goos: darwin
-        goarch: 386
+      - arm64
+    goarm:
+      - "7"
+    mod_timestamp: '{{ .CommitTimestamp }}'
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w
     hooks:
       post: hack/upx.sh
 release:
