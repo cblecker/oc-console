@@ -120,6 +120,7 @@ func (o *ConsoleCmdOptions) Complete(args []string) error {
 	if err != nil {
 		return err
 	}
+
 	o.KubeClient = kubeClient
 
 	return err
@@ -141,10 +142,11 @@ func (o *ConsoleCmdOptions) getWebConsoleURL() (string, error) {
 		Get(o.context, consolePublicConfigMap, metav1.GetOptions{})
 
 	// This means the command was run against 3.x server
-	if errors.IsNotFound(err) {
-		return o.ClientConfig.Host, nil
-	}
 	if err != nil {
+		if errors.IsNotFound(err) {
+			return o.ClientConfig.Host, nil
+		}
+
 		return "", fmt.Errorf("unable to determine console location: %v", err)
 	}
 
@@ -152,6 +154,7 @@ func (o *ConsoleCmdOptions) getWebConsoleURL() (string, error) {
 	if !exists {
 		return "", fmt.Errorf("unable to determine console location from the cluster")
 	}
+
 	return consoleURL, nil
 }
 
