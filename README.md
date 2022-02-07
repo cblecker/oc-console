@@ -6,7 +6,7 @@ default web browser.
 ## Installation
 
 ```
-go install github.com/cblecker/oc-console@master
+go install github.com/cblecker/oc-console
 ```
 
 [cli plugin]: https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/
