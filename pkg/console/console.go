@@ -1,6 +1,7 @@
 package console
 
 import (
+	"context"
 	"fmt"
 	"os"
 
@@ -49,6 +50,8 @@ type ConsoleCmdOptions struct { //nolint:golint
 	// args is the slice of strings containing any arguments passed
 	args []string
 
+	context context.Context
+
 	genericclioptions.IOStreams
 }
 
@@ -58,6 +61,8 @@ func NewConsoleCmdOptions(streams genericclioptions.IOStreams) *ConsoleCmdOption
 		configFlags: genericclioptions.NewConfigFlags(false),
 
 		IOStreams: streams,
+
+		context: context.Background(),
 	}
 }
 
@@ -133,7 +138,7 @@ func (o *ConsoleCmdOptions) Validate() error {
 func (o *ConsoleCmdOptions) getWebConsoleURL() (string, error) {
 	consolePublicConfig, err := o.KubeClient.CoreV1().
 		ConfigMaps(openShiftConfigManagedNamespaceName).
-		Get(consolePublicConfigMap, metav1.GetOptions{})
+		Get(o.context, consolePublicConfigMap, metav1.GetOptions{})
 
 	// This means the command was run against 3.x server
 	if errors.IsNotFound(err) {
