@@ -1,5 +1,8 @@
 # oc-console
 
+[![GoDoc](https://godoc.org/github.com/cblecker/oc-console?status.svg)](https://godoc.org/github.com/cblecker/oc-console)
+[![Go](https://github.com/cblecker/oc-console/workflows/Go/badge.svg)](https://github.com/cblecker/oc-console/actions?query=workflow%3AGo)
+
 A [cli plugin] that allows you to open the OpenShift 4 web console in your
 default web browser.
 
