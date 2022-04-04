@@ -18,10 +18,10 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Setup Go 1.17
+    - name: Setup Go 1.18
       uses: actions/setup-go@v2
       with:
-        go-version: 1.17
+        go-version: 1.18
 
     - name: Setup dependency cache
       uses: actions/cache@v2
@@ -45,10 +45,10 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Setup Go 1.17
+    - name: Setup Go 1.18
       uses: actions/setup-go@v2
       with:
-        go-version: 1.17
+        go-version: 1.18
 
     - name: Setup dependency cache
       uses: actions/cache@v2
@@ -74,14 +74,14 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Setup Go 1.17
+    - name: Setup Go 1.18
       uses: actions/setup-go@v2
       with:
-        go-version: 1.17
+        go-version: 1.18
 
     - name: Setup golangci-lint
       env:
-        GOLANGCI_LINT_VERSION: 1.44.0
+        GOLANGCI_LINT_VERSION: 1.45.2
       run: |
         mkdir -p ~/go/bin
         curl -sfL "https://github.com/golangci/golangci-lint/releases/download/v${GOLANGCI_LINT_VERSION:?'golangci-lint version is unset'}/golangci-lint-${GOLANGCI_LINT_VERSION}-linux-amd64.tar.gz" |\
