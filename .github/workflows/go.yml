@@ -16,17 +16,19 @@ jobs:
     steps:
 
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - name: Setup Go 1.18
-      uses: actions/setup-go@v2
+    - name: Setup Go
+      uses: actions/setup-go@v3
       with:
-        go-version: 1.18
+        go-version: '^1.19'
 
     - name: Setup dependency cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
-        path: ~/go/pkg/mod
+        path: |
+          ~/.cache/go-build
+          ~/go/pkg/mod
         key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
         restore-keys: |
           ${{ runner.os }}-go-
@@ -43,17 +45,19 @@ jobs:
     steps:
 
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - name: Setup Go 1.18
-      uses: actions/setup-go@v2
+    - name: Setup Go
+      uses: actions/setup-go@v3
       with:
-        go-version: 1.18
+        go-version: '^1.19'
 
     - name: Setup dependency cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
-        path: ~/go/pkg/mod
+        path: |
+          ~/.cache/go-build
+          ~/go/pkg/mod
         key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
         restore-keys: |
           ${{ runner.os }}-go-
@@ -72,25 +76,19 @@ jobs:
     steps:
 
     - name: Check out code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - name: Setup Go 1.18
-      uses: actions/setup-go@v2
+    - name: Setup Go
+      uses: actions/setup-go@v3
       with:
-        go-version: 1.18
-
-    - name: Setup golangci-lint
-      env:
-        GOLANGCI_LINT_VERSION: 1.45.2
-      run: |
-        mkdir -p ~/go/bin
-        curl -sfL "https://github.com/golangci/golangci-lint/releases/download/v${GOLANGCI_LINT_VERSION:?'golangci-lint version is unset'}/golangci-lint-${GOLANGCI_LINT_VERSION}-linux-amd64.tar.gz" |\
-         tar -C ~/go/bin -zx --strip-components=1 "golangci-lint-${GOLANGCI_LINT_VERSION}-linux-amd64/golangci-lint"
+        go-version: '^1.19'
 
     - name: Setup dependency cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
-        path: ~/go/pkg/mod
+        path: |
+          ~/.cache/go-build
+          ~/go/pkg/mod
         key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
         restore-keys: |
           ${{ runner.os }}-go-
@@ -98,7 +96,7 @@ jobs:
     - name: Ensure dependencies are downloaded
       run: go mod download
 
-    - name: Run Linter
-      env:
-        GOLANGCI_LINT_CACHE: ${{ env.RUNNER_TEMP }}
-      run: ~/go/bin/golangci-lint run
+    - name: Setup golangci-lint
+      uses: golangci/golangci-lint-action@v3
+      with:
+        version: v1.48
