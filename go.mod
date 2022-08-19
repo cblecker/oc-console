@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/pkg/browser v0.0.0-20210911075715-681adbf594b8
-	github.com/spf13/cobra v1.4.0
+	github.com/spf13/cobra v1.5.0
 	github.com/spf13/pflag v1.0.5
 	k8s.io/apimachinery v0.24.4
 	k8s.io/cli-runtime v0.24.4
