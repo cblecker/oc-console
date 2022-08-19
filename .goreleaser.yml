@@ -6,7 +6,8 @@ before:
   hooks:
     - go mod download
 builds:
-  - binary: oc-console
+  - id: oc-console-main
+    binary: oc-console
     env:
       - CGO_ENABLED=0
     goos:
@@ -18,6 +19,9 @@ builds:
       - arm64
     goarm:
       - "7"
+    ignore:
+      - goos: windows
+        goarch: arm64
     mod_timestamp: '{{ .CommitTimestamp }}'
     flags:
       - -trimpath
@@ -26,6 +30,21 @@ builds:
     hooks:
       post:
       - upx "{{ .Path }}"
+  - id: oc-console-winarm64
+    binary: oc-console
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+    goarch:
+      - arm64
+    goarm:
+      - "7"
+    mod_timestamp: '{{ .CommitTimestamp }}'
+    flags:
+      - -trimpath
+    ldflags:
+      - -s -w
 release:
   github:
     owner: cblecker
