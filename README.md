@@ -6,13 +6,22 @@
 A [cli plugin] that allows you to open the OpenShift 4 web console in your
 default web browser.
 
-## Installation
+[cli plugin]: https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/
 
-```
+## Installation
+There are three ways to install this plugin:
+
+Go-based install:
+```bash
 go install github.com/cblecker/oc-console@latest
 ```
 
-[cli plugin]: https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/
+Homebrew install:
+```bash
+brew install cblecker/tap/oc-console
+```
+
+Download from releases page: https://github.com/cblecker/oc-console/releases/latest
 
 ## Use
 
