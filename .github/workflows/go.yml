@@ -18,7 +18,7 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v4
     - name: Setup Go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
     - name: Setup dependency cache
       uses: actions/cache@v3
       with:
@@ -39,7 +39,7 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v4
     - name: Setup Go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
     - name: Setup dependency cache
       uses: actions/cache@v3
       with:
@@ -61,7 +61,7 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v4
     - name: Setup Go
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v5
     - name: Setup dependency cache
       uses: actions/cache@v3
       with:
