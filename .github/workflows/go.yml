@@ -20,7 +20,7 @@ jobs:
     - name: Setup Go
       uses: actions/setup-go@v5
     - name: Setup dependency cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.cache/go-build
@@ -41,7 +41,7 @@ jobs:
     - name: Setup Go
       uses: actions/setup-go@v5
     - name: Setup dependency cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.cache/go-build
@@ -63,7 +63,7 @@ jobs:
     - name: Setup Go
       uses: actions/setup-go@v5
     - name: Setup dependency cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: |
           ~/.cache/go-build
