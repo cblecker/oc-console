@@ -74,6 +74,6 @@ jobs:
     - name: Ensure dependencies are downloaded
       run: go mod download
     - name: Run golangci-lint
-      uses: golangci/golangci-lint-action@v4
+      uses: golangci/golangci-lint-action@v5
       with:
         version: v1.56
