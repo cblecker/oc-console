@@ -169,8 +169,8 @@ func (o *ConsoleCmdOptions) Run() error {
 	}
 
 	if o.URL {
-		fmt.Fprintf(o.Out, "%s\n", consoleURL)
-		return nil
+		_, err = fmt.Fprintf(o.Out, "%s\n", consoleURL)
+		return err
 	}
 
 	err = browser.OpenURL(consoleURL)
