@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
     - name: Setup Go
       uses: actions/setup-go@v5
     - name: Setup dependency cache
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
     - name: Setup Go
       uses: actions/setup-go@v5
     - name: Setup dependency cache
@@ -59,7 +59,7 @@ jobs:
     needs: build
     steps:
     - name: Check out code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
     - name: Setup Go
       uses: actions/setup-go@v5
     - name: Setup dependency cache
