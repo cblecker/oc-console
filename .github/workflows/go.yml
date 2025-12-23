@@ -24,6 +24,8 @@ jobs:
 
     - name: Setup Go
       uses: actions/setup-go@v6
+      with:
+        go-version-file: 'go.mod'
 
     - name: Ensure dependencies are downloaded
       run: go mod download
@@ -43,6 +45,8 @@ jobs:
 
     - name: Setup Go
       uses: actions/setup-go@v6
+      with:
+        go-version-file: 'go.mod'
 
     - name: Ensure dependencies are downloaded
       run: go mod download
@@ -64,6 +68,8 @@ jobs:
 
     - name: Setup Go
       uses: actions/setup-go@v6
+      with:
+        go-version-file: 'go.mod'
 
     - name: Ensure dependencies are downloaded
       run: go mod download
